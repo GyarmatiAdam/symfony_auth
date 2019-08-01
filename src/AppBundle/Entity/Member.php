@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Member
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="member")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MemberRepository")
  */
-class Member
+class Member implements UserInterface, \Serializable
 {
     /**
      * @var int
