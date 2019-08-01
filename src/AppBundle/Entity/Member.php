@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
+
 /**
  * Member
  *
@@ -36,6 +38,8 @@ class Member implements UserInterface, \Serializable
      */
     private $email;
 
+    private $plainPassword;
+
     /**
      * @var string
      *
@@ -52,6 +56,26 @@ class Member implements UserInterface, \Serializable
     public function getId()
     {
         return $this->id;
+    }
+
+    
+    /**
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $plainPassword
+     * @return Member
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
     }
 
     /**
@@ -125,5 +149,40 @@ class Member implements UserInterface, \Serializable
     {
         return $this->password;
     }
-}
 
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+        ]);
+    }
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password
+            ) = unserialize($serialized);
+    }
+
+    public function getRoles()
+    {
+        return [
+            'ROLE_USER',
+        ];
+    }
+
+    public function getSalt()
+    {
+        //TODO: Implement getSalt() method
+    }
+
+    public function eraseCredentials()
+    {
+        //TODO: Implement eraseCredentials() method
+    }
+
+}

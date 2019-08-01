@@ -13,4 +13,13 @@ class SecurityController extends Controller
     {
         return $this->render('security/login.html.twig');
     }
+
+    /**
+     * @Route("/logout")
+     * @throws \RuntimeException
+     */
+    public function logoutAction()
+    {
+        throw new \RuntimeException('This should never be called directly.');
+    }
 }
