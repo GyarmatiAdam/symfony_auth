@@ -34,7 +34,7 @@ class AuthenticationFailedHandler extends DefaultAuthenticationFailureHandler
     {
             $this->flashBag->add(
                 'warning',
-                'Denied!'
+                'Username or Password wrong! Please try again!'
             );
 
         return parent::onAuthenticationFailure($request, $exception);

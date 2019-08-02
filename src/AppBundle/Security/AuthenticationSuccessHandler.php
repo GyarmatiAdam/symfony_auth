@@ -27,7 +27,7 @@ class AuthenticationSuccessHandler extends DefaultAuthenticationSuccessHandler i
     {
         $this->flashBag->add(
             'success',
-            'Welcome!'
+            'You are succesfully logged in'
         );
 
         return parent::onAuthenticationSuccess($request, $token);

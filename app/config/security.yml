@@ -37,6 +37,8 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                success_handler: member.authentication_success_handler
+                failure_handler: member.authentication_failure_handler
             logout: true
             anonymous: ~
             # activate different ways to authenticate
