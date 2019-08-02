@@ -1,17 +1,20 @@
 <?php
 
+// /src/AppBundle/Entity/Member.php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Member
  *
  * @ORM\Table(name="member")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MemberRepository")
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  */
 class Member implements UserInterface, \Serializable
 {
