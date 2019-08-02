@@ -4,6 +4,23 @@ parameters:
     #parameter_name: value
 
 services:
+
+    member.authentication_success_handler:
+        class: AppBundle\Security\AuthenticationSuccessHandler
+        arguments:
+            - "@security.http_utils"
+            - []
+            - "@session.flash_bag"
+
+    member.authentication_failure_handler:
+        class: AppBundle\Security\AuthenticationFailedHandler
+        arguments:
+            - "@http_kernel"
+            - "@security.http_utils"
+            - []
+            - "@logger"
+            - "@session.flash_bag"
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
